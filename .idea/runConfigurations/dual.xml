@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="dual" type="CompoundRunConfigurationType">
+    <toRun name="client0.js" type="NodeJSConfigurationType" />
+    <toRun name="client1.js" type="NodeJSConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>
