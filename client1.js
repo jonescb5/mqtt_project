@@ -1,15 +1,15 @@
 const mqtt = require('mqtt')
 
+// Use for loopback if no external broker
 // const options= {
 //     port: '1883',
-//     host: '127.0.0.1',
-//     username:'client1',
-//     password:'client1passwd'
+//     host: '127.0.0.1'
 // }
 
+// External broker
 const options={
     port:'8883',
-    host:'192.168.1.204',
+    host:'broker.ip.addr.here',
     username:'client1',
     password:'client1passwd'
 }
@@ -29,7 +29,7 @@ client.on('message', (topic, message) => {
         let msg = message.toString()
         console.log('Data received from client0 on topic: pub/data '+ msg);
         if(msg === 'done'){
-            throw new Error('Program Terminated')
+            return 0;
         }
         client.publish('sub/ack','Ack: Success..!!');
         console.log("Acknowledgement sent to client0 ==> Ack: Success..!! \r\n")

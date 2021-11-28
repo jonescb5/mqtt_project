@@ -1,16 +1,15 @@
-const readline = require('readline')
 const mqtt = require('mqtt')
 
+// Use for loopback if no external broker
 // const options= {
 //     port: '1883',
-//     host: '127.0.0.1',
-//     username:'client0',
-//     password:'client0passwd'
+//     host: '127.0.0.1'
 // }
 
+// External broker
 const options={
     port:'8883',
-    host:'192.168.1.204',
+    host:'broker.ip.addr.here',
     username:'client0',
     password:'client0passwd'
 }
@@ -18,11 +17,6 @@ const options={
 let inc = 0;
 
 const client = mqtt.connect(options)
-
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
 client.on('connect', () => {
     client.subscribe('sub/ack');
@@ -34,7 +28,7 @@ client.on('message', (topic, message) => {
         console.log( '\n' + message.toString());
         if(inc >= 100){
             client.publish('pub/data', 'done');
-            throw new Error('Program Terminated');
+            return 0;
         }
         inc++;
         message = inc.toString();
