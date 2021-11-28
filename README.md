@@ -47,7 +47,7 @@ The mosquitto broker is now ready!
 
 ## Running the clients:
 
-The clients, client0.js and client1.js, and be run on one device or two. In my testing I ran client0 (the publisher) on my desktop computer and client1 (the subscriber) on my laptop.
+The clients, client0.js and client1.js, and be run on one device or two. In my testing I ran client0 (the publisher) on my desktop computer and client1 (the subscriber) on my laptop with the broker hosted on my home server.
 This configuration is shown below.
 
 ![system_diagram](system_diagram.png)
